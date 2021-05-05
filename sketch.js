@@ -43,11 +43,11 @@ function draw() {
   }
   else if(keyDown(UP_ARROW)){
     balloon.addAnimation("hotAirBalloon",balloonImage2);
-    changePosition(0,1);
+    changePosition(0,-1);
   }
   else if(keyDown(DOWN_ARROW)){
     balloon.addAnimation("hotAirBalloon",balloonImage2);
-    changePosition(0,-1);
+    changePosition(0,1);
   }
 
   drawSprites();
@@ -57,8 +57,8 @@ function draw() {
   text("**Use arrow keys to move Hot Air Balloon!",40,40);
 }
 function changePosition(x,y){
-  balloon.x = ball.x + x;
-  balloon.y = ball.y + y;
+  balloon.x = balloon.x + x;
+  balloon.y = balloon.y + y;
   database.ref('balloon/height').set({
       x:balloon.x,
       y:balloon.y
@@ -70,6 +70,6 @@ function readposition(data){
 var position=data.val();
 balloon.x=position.x
 balloon.y=position.y
-console.log(balloon.x+","+ball.y)
+console.log(balloon.x+","+balloon.y)
 
 }
